@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilai Siswa</title>
+</head>
+<body>
+    <h1>Penilaian Siswa</h1>
+
+    <label for="nilai">Masukkan nilai siswa:</label>
+    <input type="number" id="nilai" placeholder="Input nilai">
+
+    <button onclick="hitungNilai()">Hitung</button>
+
+    <p id="hasil"></p>
+
+    <script>
+        function hitungNilai() {
+            // Ambil nilai dari input
+            var nilai = document.getElementById('nilai').value;
+
+            // Validasi input
+            if (nilai === "" || isNaN(nilai)) {
+                alert("Masukkan nilai yang valid");
+                return;
+            }
+
+            // Hitung nilai huruf
+            var nilaiHuruf = "";
+            if (nilai >= 80) {
+                nilaiHuruf = "A";
+            } else if (nilai >= 70) {
+                nilaiHuruf = "B";
+            } else if (nilai >= 60) {
+                nilaiHuruf = "C";
+            } else {
+                nilaiHuruf = "D";
+            }
+
+            // Cek nilai ganjil atau genap
+            var jenisNilai = (nilai % 2 === 0) ? "Genap" : "Ganjil";
+
+            // Tampilkan hasil nilai
+            var hasilPesan = "Nilai: " + nilai + "<br>";
+            hasilPesan += "Nilai Huruf: " + nilaiHuruf + "<br>";
+            hasilPesan += "Jenis Nilai: " + jenisNilai;
+
+            document.getElementById('hasil').innerHTML = hasilPesan;
+        }
+    </script>
+</body>
+</html>
